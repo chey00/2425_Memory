@@ -11,8 +11,8 @@ class CentralWidget(QWidget):
 
         picture_1 = QPixmap("cat_1.png")
 
-        scaled_pixmap = picture_1.scaledToWidth(900, Qt.TransformationMode.FastTransformation)
-        scaled_pixmap_smooth = picture_1.scaledToWidth(900, Qt.TransformationMode.SmoothTransformation)
+        scaled_pixmap = picture_1.scaledToWidth(400, Qt.TransformationMode.FastTransformation)
+        scaled_pixmap_smooth = picture_1.scaledToWidth(400, Qt.TransformationMode.SmoothTransformation)
 
         label_1 = QLabel(self)
         label_1.setPixmap(scaled_pixmap)
