@@ -1,6 +1,6 @@
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QPicture, QPixmap
-from PyQt6.QtWidgets import QWidget, QGridLayout, QLabel
+from PyQt6.QtWidgets import QWidget, QGridLayout
+
+from MemoryCard import MemoryCard
 
 
 class CentralWidget(QWidget):
@@ -9,17 +9,14 @@ class CentralWidget(QWidget):
 
         layout = QGridLayout(parent)
 
-        picture_1 = QPixmap("cat_1.png")
+        memory_card_1 = MemoryCard("cat_1.png")
+        memory_card_2 = MemoryCard("cat_2.png")
+        memory_card_3 = MemoryCard("cat_3.png")
+        memory_card_4 = MemoryCard("cat_4.png")
 
-        scaled_pixmap = picture_1.scaledToWidth(400, Qt.TransformationMode.FastTransformation)
-        scaled_pixmap_smooth = picture_1.scaledToWidth(400, Qt.TransformationMode.SmoothTransformation)
-
-        label_1 = QLabel(self)
-        label_1.setPixmap(scaled_pixmap)
-        label_2 = QLabel(self)
-        label_2.setPixmap(scaled_pixmap_smooth)
-
-        layout.addWidget(label_1, 0, 0)
-        layout.addWidget(label_2, 0, 1)
+        layout.addWidget(memory_card_1, 0, 0)
+        layout.addWidget(memory_card_2, 0, 1)
+        layout.addWidget(memory_card_3, 0, 2)
+        layout.addWidget(memory_card_4, 0, 3)
 
         self.setLayout(layout)
