@@ -33,27 +33,28 @@ class CentralWidget(QWidget):
 
     @pyqtSlot()
     def card_listener(self):
-        if self.first_card is None:
-            self.first_card = self.sender()
-            self.first_card.setDisabled(True)
-        else:
+        if self.first_card:
             self.second_card = self.sender()
 
-            if self.second_card.ident == self.first_card.ident:
+            if self.first_card.ident == self.second_card.ident:
                 self.second_card.setDisabled(True)
-                print("Paar gefunden")
+
+                self.first_card = None
             else:
                 self.first_card.setDisabled(False)
 
                 self.setDisabled(True)
-                self.timer.singleShot(5 * 1000, self.flip_cards)
+                self.timer.singleShot(2 * 1000, self.flip_cards)
+        else:
+            self.first_card = self.sender()
+            self.first_card.setDisabled(True)
 
     @pyqtSlot()
     def flip_cards(self):
         self.first_card.flip_card()
-        self.first_card = None
-
         self.second_card.flip_card()
+
+        self.first_card = None
         self.second_card = None
 
         self.setDisabled(False)
